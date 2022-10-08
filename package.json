@@ -1,0 +1,27 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "",
+  "main": "frontend/src/index.js",
+  "scripts": {
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Svencap/Chat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Svencap/Chat/issues"
+  },
+  "homepage": "https://github.com/Svencap/Chat#readme",
+  "dependencies": {
+    "@hexlet/chat-server": "^1.1.6"
+  },
+  "devDependencies": {
+    "cypress": "^10.9.0",
+    "cypress-localstorage-commands": "^2.2.1",
+    "start-server-and-test": "^1.14.0"
+  }
+}
