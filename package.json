@@ -4,7 +4,11 @@
   "description": "",
   "main": "frontend/src/index.js",
   "scripts": {
-    
+    "test": "cypress open",
+    "start": "start-server -s ./frontend/build",
+    "build": "npm run build --prefix frontend",
+    "postinstall": "cd frontend && npm ci",
+    "test:cypress": "cypress open"
   },
   "repository": {
     "type": "git",
