@@ -1,0 +1,13 @@
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  border: none !important;
+}
+
+.hover__input__svg:hover {
+  fill: #0d6efd;
+}
