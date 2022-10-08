@@ -70,7 +70,7 @@ const LoginPage = () => {
             <div className="col-12 col-md-8 col-xxl-6">
               <div className="card shadow-sm">
                 <div className="card-body row p-5">
-                  <div className="col-12 col-md-6 d-flex align-items-center justify-content-center"><span>123</span></div>
+                  <div className="col-12 col-md-6 d-flex align-items-center justify-content-center"></div>
                   <Form
                     className="col-12 col-md-6 mt-3 mt-mb-0"
                     onSubmit={formik.handleSubmit}
