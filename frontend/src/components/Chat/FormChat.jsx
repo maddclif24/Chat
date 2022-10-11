@@ -18,14 +18,9 @@ const InputChat = () => {
   const [disabled, setDisable] = useState(null);
   const dispatch = useDispatch();
   const ref = useRef();
-  const resetForm = useRef();
+  // const resetForm = useRef();
   const { t } = useTranslation('chatPage', { returnObjects: true });
   const { newMessage } = useChat();
-
-  useEffect(() => {
-    ref.current.focus();
-    setDisable(true);
-  }, [setDisable]);
 
   const channelId = useSelector((state) => state.viewSlice.activeChannelId);
   const { username } = JSON.parse(localStorage.getItem('user'));
@@ -34,23 +29,23 @@ const InputChat = () => {
     initialValues: {
       message: '',
     },
-    onSubmit: (values) => {
+    onSubmit: (values, { resetForm }) => {
       const message = {
         body: filter.clean(values.message.trim()),
         channelId,
         username,
       };
       newMessage(message);
+      resetForm();
       ref.current.value = '';
-      /* socket.emit('newMessage', message);
-      socket.on('newMessage', (payload) => {
-        dispatch(messageSlice.addNewMessage(payload));
-        ref.current.value = '';
-      });
-      */
     },
   });
 
+  useEffect(() => {
+    ref.current.focus();
+  }, []);
+
+  console.log(formik.values);
   return (
     <div className="mt-auto px-5 py-3">
       <Form
