@@ -1,38 +1,18 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useRef, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
-import { useFormik } from 'formik';
-import {
-  Modal, Form, Button, CloseButton,
-} from 'react-bootstrap';
-import { io } from 'socket.io-client';
-import * as Yup from 'yup';
+import { React } from 'react';
+import { useDispatch } from 'react-redux';
+import { Modal, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 import useChat from '../../../hooks/useChat.jsx';
-import { actions as channelActions } from '../../../slices/channelSlice.js';
-import { actions as viewActions } from '../../../slices/viewSlice.js';
 
-// const socket = io('http://0.0.0.0:5001');
-
-const RemoveChannel = ({
-  show, close, id, setShow,
-}) => {
-  // console.log(id);
+const RemoveChannel = ({ show, close, id }) => {
   const { t } = useTranslation();
-  const dispacth = useDispatch();
   const { removeChannel } = useChat();
   const handleRemoveChannel = (e) => {
     e.preventDefault();
-    /* socket.emit('removeChannel', { id });
-    socket.on('removeChannel', (payload) => {
-      dispacth(channelActions.removeChannel(payload));
-      setShow(false);
-      dispacth(viewActions.switchActiveChannel(1));
-    });
-    */
     removeChannel(id);
     close();
     toast.success(t('tostify.successRemove'));

@@ -66,7 +66,6 @@ const Channel = ({ channel, user }) => {
         {isShowRemove ? (
           <RemoveChannel
             show={isShowRemove}
-            setShow={setShowRemove}
             id={button.props.id}
             close={handleCloseRemove}
           />
@@ -77,7 +76,6 @@ const Channel = ({ channel, user }) => {
         {isShowRename ? (
           <RenameChannel
             show={isShowRename}
-            setShow={setShowRename}
             id={button.props.id}
             close={handleClose}
           />
