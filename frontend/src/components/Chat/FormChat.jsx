@@ -47,7 +47,6 @@ const InputChat = () => {
         username,
       };
       newMessage(message);
-      // resetForm();
       ref.current.value = '';
       resetForm({ values: { message: '' } });
       console.log(`Это инпут ${ref.current.value}`);
