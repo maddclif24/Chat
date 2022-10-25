@@ -4,6 +4,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
+import InputEmoji from 'react-input-emoji';
+
+import dataEmoji from '@emoji-mart/data';
+import Picker from '@emoji-mart/react';
+
 import 'react-toastify/dist/ReactToastify.css';
 import { Form } from 'react-bootstrap';
 import axios from 'axios';
@@ -26,6 +31,27 @@ const Chat = () => {
 
   const channelSchema = new schema.Entity('channels');
   const messageSchema = new schema.Entity('messages');
+
+  const [text, setText] = useState('');
+
+  function handleOnEnter(textEmoji) {
+    console.log('enter', textEmoji);
+  }
+
+  const custom = [
+    {
+      id: 'gifs',
+      name: 'GIFs',
+      emojis: [
+        {
+          id: 'party_parrot',
+          name: 'Party Parrot',
+          keywords: ['dance', 'dancing'],
+          skins: [{ src: 'https://missiveapp.com/open/emoji-mart/parrot.6a845cb2.gif' }],
+        },
+      ],
+    },
+  ];
 
   /* const getNormalalized = (data) => {
     const shema = new schema.Entity('channels');
@@ -74,6 +100,8 @@ const Chat = () => {
             <HeaderChatList />
             <Messeges />
             <InputChat />
+            {/* <Picker set='apple'/>
+            <GrEmoji /> */}
           </div>
         </div>
       </div>
