@@ -28,16 +28,10 @@ const InputChat = () => {
   const [disabled, setDisable] = useState(null);
   const dispatch = useDispatch();
   const ref = useRef();
-  const resetForm = useRef();
   const { t } = useTranslation('chatPage', { returnObjects: true });
   const { newMessage } = useChat();
 
   const [openEmoji, setOpenEmoji] = useState(false);
-
-  useEffect(() => {
-    ref.current.focus();
-    setDisable(true);
-  }, [setDisable]);
 
   const channelId = useSelector((state) => state.viewSlice.activeChannelId);
   const { username } = JSON.parse(localStorage.getItem('user'));
@@ -46,7 +40,7 @@ const InputChat = () => {
     initialValues: {
       message: '',
     },
-    onSubmit: (values) => {
+    onSubmit: (values, { resetForm }) => {
       const message = {
         body: filter.clean(values.message.trim()),
         channelId,
@@ -54,30 +48,27 @@ const InputChat = () => {
       };
       newMessage(message);
       ref.current.value = '';
+      resetForm({ values: { message: '' } });
+      console.log(`Это инпут ${ref.current.value}`);
     },
   });
 
+  useEffect(() => {
+    console.log('Маунт');
+    ref.current.focus();
+    ref.current.value = '';
+    formik.values.message = '';
+    setDisable(true);
+  }, [setDisable]);
+
+  console.log(formik.values);
   const emojiPickerOpen = (e) => {
-    console.log('Emoji open');
     setOpenEmoji(true);
   };
 
   const emojiPickerClose = (e) => {
-    console.log('Emoji close');
     setOpenEmoji(false);
   };
-
-  const styles = {
-    position: 'absolute',
-    top: 28,
-    right: 0,
-    left: 0,
-    zIndex: 1,
-    border: '1px solid',
-    p: 1,
-    bgcolor: 'background.paper',
-  };
-
   return (
     <div className="mt-auto px-5 py-3 position-relative">
       <div className="d-flex flex-row flex_form_chat">
