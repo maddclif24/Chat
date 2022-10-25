@@ -3,15 +3,7 @@
 /* eslint-disable padded-blocks */
 
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch,
-  Redirect,
-  useLocation,
-} from "react-router-dom";
-// import cn from "classnames";
+import { Link } from "react-router-dom";
 
 const NotFoundPage = () => (
   <div className="h-100">
