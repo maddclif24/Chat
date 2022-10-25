@@ -69,6 +69,7 @@ const InputChat = () => {
   const emojiPickerClose = (e) => {
     setOpenEmoji(false);
   };
+  
   return (
     <div className="mt-auto px-5 py-3 position-relative">
       <div className="d-flex flex-row flex_form_chat">
@@ -121,7 +122,6 @@ const InputChat = () => {
                 previewPosition="none"
                 data={dataEmoji}
                 onEmojiSelect={(emoji) => {
-                  console.log(emoji.native);
                   ref.current.value += emoji.native;
                   formik.values.message += emoji.native;
                 }}
