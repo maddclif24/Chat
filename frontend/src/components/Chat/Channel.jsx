@@ -25,7 +25,6 @@ const Channel = ({ channel, user }) => {
 
   const dispatch = useDispatch();
   const activeChannel = useSelector((state) => state.viewSlice.activeChannelId);
-  console.log(channel, user);
   const cnButton = cn(
     'w-100',
     'rounded-0',
