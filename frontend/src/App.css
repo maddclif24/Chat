@@ -11,3 +11,9 @@
 .hover__input__svg:hover {
   fill: #0d6efd;
 }
+
+em-emoji-picker {
+  position: absolute;
+  bottom: 80px;
+  right: 90px;
+}
