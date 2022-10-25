@@ -16,7 +16,6 @@ export const fetchGetData = createAsyncThunk(
     // const token = localStorage.getItem('user', 'token');
     // 'Authorization': `token ${access_token}`
     const response = await axios.get(routes.dataPath(), { headers: { Authorization: `Bearer ${token}` } });
-    console.log(response);
     return response.data;
   },
 );
