@@ -25,7 +25,6 @@ const Channel = ({ channel, user }) => {
 
   const dispatch = useDispatch();
   const activeChannel = useSelector((state) => state.viewSlice.activeChannelId);
-  console.log(channel, user);
   const cnButton = cn(
     'w-100',
     'rounded-0',
@@ -67,7 +66,6 @@ const Channel = ({ channel, user }) => {
         {isShowRemove ? (
           <RemoveChannel
             show={isShowRemove}
-            setShow={setShowRemove}
             id={button.props.id}
             close={handleCloseRemove}
           />
@@ -78,7 +76,6 @@ const Channel = ({ channel, user }) => {
         {isShowRename ? (
           <RenameChannel
             show={isShowRename}
-            setShow={setShowRename}
             id={button.props.id}
             close={handleClose}
           />

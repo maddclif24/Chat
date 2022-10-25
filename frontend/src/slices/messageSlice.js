@@ -5,8 +5,6 @@ import { actions as channelActions } from './channelSlice.js';
 
 const messageAdapter = createEntityAdapter();
 
-// const initialState = { messages: [] };
-
 const initialState = messageAdapter.getInitialState();
 
 const messageSlice = createSlice({
