@@ -4,17 +4,15 @@
 /* eslint-disable padded-blocks */
 
 import React, { useEffect, useRef, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { Button, Form, FloatingLabel } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import cn from "classnames";
 import axios from "axios";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import routes from "../routes";
 import useAuth from "../hooks/index.jsx";
-import { loginUser, signupUser, selectors } from "../slices/loginSlice.js";
 
 const SingUpPage = () => {
   const [successAuth, setSuccessAuth] = useState(' ');
@@ -36,6 +34,10 @@ const SingUpPage = () => {
       "Пароли должны совпадать",
     ),
   });
+
+  useEffect(() => {
+    ref.current.focus();
+  }, []);
 
   const f = useFormik({
     initialValues: {
@@ -85,6 +87,7 @@ const SingUpPage = () => {
                           type="text"
                           placeholder={t('signup.username')}
                           required
+                          ref={ref}
                           onChange={f.handleChange}
                           name="username"
                           className={cn(
