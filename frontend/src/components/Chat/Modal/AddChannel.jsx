@@ -34,11 +34,12 @@ const AddChannel = ({ show, close }) => {
       name: '',
     },
     validationSchema: channelSchema,
-    onSubmit: (values) => {
+    onSubmit: (values, { resetForm }) => {
       const { username } = JSON.parse(localStorage.getItem('user'));
       const channel = { name: values.name.trim(), username };
       newChannel(channel);
       close();
+      resetForm();
       toast.success(t('tostify.successAdd'));
     },
   });
