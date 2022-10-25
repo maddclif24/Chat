@@ -4,9 +4,8 @@
 /* eslint-disable react/react-in-jsx-scope */
 import cn from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { actions as viewActions } from '../../slices/viewSlice.js';
@@ -88,27 +87,5 @@ const Channel = ({ channel, user }) => {
     </Dropdown>
   );
   return channel.removable ? dropDown : button;
-  /* return (
-    <Dropdown as={ButtonGroup}>
-      <li className="nav-item w-100">
-        <Button
-          type="button"
-          id={channel.id}
-          onClick={() => dispatch(viewActions.switchActiveChannel(Number(channel.id)))
-          }
-          className={cnButton}
-        >
-          <span className="me-1">#</span>
-          {channel.name}
-        </Button>
-      </li>
-      <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
-      <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">Удалить</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Переименовать</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
-  );
-  */
 };
 export default Channel;

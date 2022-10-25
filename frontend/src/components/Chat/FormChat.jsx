@@ -2,8 +2,7 @@
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 
 import Box from '@mui/material/Box';
 import ClickAwayListener from '@mui/base/ClickAwayListener';
@@ -16,19 +15,12 @@ import Picker from '@emoji-mart/react';
 
 import { Form } from 'react-bootstrap';
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import { io } from 'socket.io-client';
-import { actions as messageSlice } from '../../slices/messageSlice.js';
 import useChat from '../../hooks/useChat.jsx';
 
-// const socket = io('http://0.0.0.0:5001');
 const filter = require('leo-profanity');
 
 const InputChat = () => {
-  const [disabled, setDisable] = useState(null);
-  const dispatch = useDispatch();
   const ref = useRef();
-  const { t } = useTranslation('chatPage', { returnObjects: true });
   const { newMessage } = useChat();
 
   const [openEmoji, setOpenEmoji] = useState(false);
@@ -49,19 +41,13 @@ const InputChat = () => {
       newMessage(message);
       ref.current.value = '';
       resetForm({ values: { message: '' } });
-      console.log(`Это инпут ${ref.current.value}`);
     },
   });
 
   useEffect(() => {
-    console.log('Маунт');
     ref.current.focus();
-    ref.current.value = '';
-    formik.values.message = '';
-    setDisable(true);
-  }, [setDisable]);
+  }, []);
 
-  console.log(formik.values);
   const emojiPickerOpen = (e) => {
     setOpenEmoji(true);
   };
@@ -69,7 +55,7 @@ const InputChat = () => {
   const emojiPickerClose = (e) => {
     setOpenEmoji(false);
   };
-  
+
   return (
     <div className="mt-auto px-5 py-3 position-relative">
       <div className="d-flex flex-row flex_form_chat">

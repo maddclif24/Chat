@@ -29,7 +29,6 @@ const init = async () => {
     },
   };
   const socket = io();
-  // const socket = 'Какой-то текст';
   const root = ReactDOM.createRoot(document.getElementById("root"));
   root.render(
     <Provider store={store}>

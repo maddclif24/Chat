@@ -1,20 +1,11 @@
 /* eslint-disable no-prototype-builtins */
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useRef, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
-import InputEmoji from 'react-input-emoji';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
-import dataEmoji from '@emoji-mart/data';
-import Picker from '@emoji-mart/react';
-
-import 'react-toastify/dist/ReactToastify.css';
-import { Form } from 'react-bootstrap';
 import axios from 'axios';
-import { normalize, schema } from 'normalizr';
 import routes from '../../routes';
-import useAuth from '../../hooks/index.jsx';
 
 import { actions as channelActions } from '../../slices/channelSlice.js';
 import { actions as viewActions } from '../../slices/viewSlice.js';
@@ -26,42 +17,8 @@ import HeaderChatList from './HeaderChat.jsx';
 import ChannelList from './ChannelLIst.jsx';
 
 const Chat = () => {
-  const auth = useAuth();
   const dispatch = useDispatch();
 
-  const channelSchema = new schema.Entity('channels');
-  const messageSchema = new schema.Entity('messages');
-
-  const [text, setText] = useState('');
-
-  function handleOnEnter(textEmoji) {
-    console.log('enter', textEmoji);
-  }
-
-  const custom = [
-    {
-      id: 'gifs',
-      name: 'GIFs',
-      emojis: [
-        {
-          id: 'party_parrot',
-          name: 'Party Parrot',
-          keywords: ['dance', 'dancing'],
-          skins: [{ src: 'https://missiveapp.com/open/emoji-mart/parrot.6a845cb2.gif' }],
-        },
-      ],
-    },
-  ];
-
-  /* const getNormalalized = (data) => {
-    const shema = new schema.Entity('channels');
-    const message = new schema.Entity('messages');
-
-    const normalizedData = normalize(data, [message]);
-
-    return normalizedData;
-  };
-  */
   const getNormalalized = (data) => {
     const entities = data.reduce((acc, item) => {
       acc[item.id] = item;
@@ -100,8 +57,6 @@ const Chat = () => {
             <HeaderChatList />
             <Messeges />
             <InputChat />
-            {/* <Picker set='apple'/>
-            <GrEmoji /> */}
           </div>
         </div>
       </div>

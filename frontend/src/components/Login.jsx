@@ -4,43 +4,28 @@
 /* eslint-disable padded-blocks */
 
 import React, { useEffect, useRef, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { Button, Form, FloatingLabel } from "react-bootstrap";
 import { useFormik } from "formik";
 import { useTranslation } from 'react-i18next';
-import * as Yup from "yup";
 import cn from "classnames";
 import axios from "axios";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import routes from "../routes";
 import useAuth from "../hooks/index.jsx";
-import { loginUser, selectors } from "../slices/loginSlice.js";
 
 const LoginPage = () => {
   const [successAuth, setSuccessAuth] = useState(' ');
   const auth = useAuth();
   const navigation = useNavigate();
-  // const dispatch = useDispatch();
   const { t } = useTranslation();
-
-  const loginSchema = Yup.object().shape({
-    username: Yup.string()
-      .min(3, "Не менее 3 символов")
-      .max(15, "Не более 15 символов"),
-    password: Yup.string()
-      .min(3, "Пароль должен быть не менее 3 символов")
-      .max(25, "Слишком длинный пароль >= 25"),
-  });
 
   const formik = useFormik({
     initialValues: {
       username: "",
       password: "",
     },
-    // validationSchema: loginSchema,
     onSubmit: async (values) => {
-      // dispatch(loginUser(values));
       try {
         const { data } = await axios.post(routes.loginPath(), values);
         localStorage.setItem('user', JSON.stringify(data));
