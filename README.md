@@ -2,4 +2,4 @@
 
 # Deploy
 
-https://chat-svencap.herokuapp.com/
+https://chat-production-693f.up.railway.app/
